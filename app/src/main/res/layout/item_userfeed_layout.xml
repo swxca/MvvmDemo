@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="Status"
+            type="zhangtao.com.MvvmDemo.entity.Status" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:orientation="vertical">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="12dp"
+            android:layout_below="@+id/bottom_layout"
+            android:background="#f0f2f5" />
+        <RelativeLayout
+            android:id="@+id/user_logo_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:background="#ffffff">
+
+            <zhangtao.com.MvvmDemo.widget.CircleImageView
+                android:id="@+id/item_mainpage_headImg"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_default_image" />
+
+            <TextView
+                android:id="@+id/item_mainpage_userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="12dp"
+                android:layout_toRightOf="@+id/item_mainpage_headImg"
+                android:text="@{Status.userName}"
+                android:textColor="#424242"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:id="@+id/official_im"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/item_mainpage_userName" />
+
+            <TextView
+                android:id="@+id/item_mainpage_publishTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="16dp"
+                android:text="@{Status.pubTimeNice}"
+                android:textColor="#7d8385"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="7dp">
+
+                <ImageView
+                    android:id="@+id/state_im"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="2.5dp"
+                    android:paddingRight="5dp"
+                    android:src="@mipmap/zhiding" />
+
+                <TextView
+                    android:id="@+id/item_mainpage_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:lineSpacingExtra="4dp"
+                    android:maxLines="4"
+                    android:text="@{Status.content}"
+                    android:textColor="#231f1f"
+                    android:textSize="15sp" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <com.lzy.ninegrid.NineGridView
+            android:id="@+id/nineGrid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:ngv_gridSpacing="3dp"
+            app:ngv_maxSize="9"
+            app:ngv_mode="grid"
+            app:ngv_singleImageRatio="1"
+            app:ngv_singleImageSize="250dp" />
+
+        <LinearLayout
+            android:id="@+id/bottom_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/con"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/share_layout"
+                android:layout_width="0dp"
+                android:layout_height="37dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_tran2gray_sel">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:src="@mipmap/share_icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="5dp"
+                        android:text="转发"
+                        android:textColor="#909090"
+                        android:textSize="11sp" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="1px"
+                android:layout_height="22dp"
+                android:layout_gravity="center_vertical"
+                android:background="#e6e6e6" />
+
+            <RelativeLayout
+                android:id="@+id/comment_layout"
+                android:layout_width="0dp"
+                android:layout_height="37dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_tran2gray_sel">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true">
+
+                    <ImageView
+                        android:id="@+id/comment_im"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:src="@mipmap/pinglun" />
+
+                    <TextView
+                        android:id="@+id/comment_count_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="5dp"
+                        android:text="@{Status.commentCount}"
+                        android:textColor="#909090"
+                        android:textSize="11sp" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="1px"
+                android:layout_height="22dp"
+                android:layout_gravity="center_vertical"
+                android:background="#e6e6e6" />
+
+            <RelativeLayout
+                android:id="@+id/zan_layout"
+                android:layout_width="0dp"
+                android:layout_height="37dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_tran2gray_sel">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true">
+
+                    <ImageView
+                        android:id="@+id/like_im"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:clickable="false"
+                        android:src="@mipmap/zan" />
+
+                    <TextView
+                        android:id="@+id/like_count_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="5dp"
+                        android:text="@{Status.likeCount}"
+                        android:textColor="#909090"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>    </LinearLayout>
+</layout>

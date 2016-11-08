@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="Status"
+            type="zhangtao.com.MvvmDemo.entity.Status" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/user_logo_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:background="#ffffff">
+
+            <zhangtao.com.MvvmDemo.widget.CircleImageView
+                android:id="@+id/item_mainpage_headImg"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_default_image"/>
+
+            <TextView
+                android:id="@+id/item_mainpage_userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="12dp"
+                android:layout_toRightOf="@+id/item_mainpage_headImg"
+                android:text="@{Status.userName}"
+                android:textColor="#424242"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:id="@+id/official_im"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/item_mainpage_userName" />
+
+            <TextView
+                android:id="@+id/item_mainpage_publishTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="16dp"
+                android:text="@{Status.pubTimeNice}"
+                android:textColor="#7d8385"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </LinearLayout>
+</layout>
