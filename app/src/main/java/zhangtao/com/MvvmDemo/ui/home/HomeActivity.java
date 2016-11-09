@@ -135,6 +135,6 @@ public class HomeActivity extends Activity {
         recyclerView= (RecyclerView) findViewById(R.id.recyclerview);
         RecyclerViewUtils.setLinearManagerAndAdapter(recyclerView,adapter);
         recyclerView.addItemDecoration(DividerItemDecoration.newVertical(this,
-                R.dimen.list_divider_height, R.color.colorAccent));
+                R.dimen.list_divider_height, R.color.line_color));
     }
 }
