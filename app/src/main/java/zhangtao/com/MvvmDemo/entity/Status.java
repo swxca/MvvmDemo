@@ -8,19 +8,68 @@ import java.util.List;
 
 import zhangtao.com.MvvmDemo.BR;
 
+
 /**
  * Created by zhangtao on 16/11/7.
  */
 
 public class Status extends BaseObservable implements Serializable {
     private int id,userId,userCategory,feedType,commentCount,likeCount,opState,feedCategory
-            ,likeState,privateType,followerCount,favoiteState;
-    private String content,pubTimeNice,userLogo,userName,shareUrl;
+            ,likeState,privateType,followerCount,favoriteState;
+    private String content,pubTimeNice,userLogo,userName,shareUrl,title,link,description,userTag,tag;
     List<FeedResource> resList;
     Long createTime;
-    public Status(int id){
-        this.id=id;
+    @Bindable
+    public String getTag() {
+        return tag;
     }
+
+
+    public void setTag(String tag) {
+        this.tag = tag;
+        notifyPropertyChanged(BR.tag);
+    }
+
+    @Bindable
+    public String getUserTag() {
+        return userTag;
+    }
+
+    public void setUserTag(String userTag) {
+        this.userTag = userTag;
+        notifyPropertyChanged(BR.userTag);
+    }
+
+    @Bindable
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+        notifyPropertyChanged(BR.description);
+    }
+
+    @Bindable
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+        notifyPropertyChanged(BR.link);
+    }
+
+    @Bindable
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+        notifyPropertyChanged(BR.title);
+    }
+
 
     @Bindable
     public int getId() {
@@ -66,6 +115,7 @@ public class Status extends BaseObservable implements Serializable {
 
     public void setCommentCount(int commentCount) {
         this.commentCount = commentCount;
+        notifyPropertyChanged(BR.commentCount);
     }
     @Bindable
     public String getLikeCount() {
@@ -74,6 +124,7 @@ public class Status extends BaseObservable implements Serializable {
 
     public void setLikeCount(int likeCount) {
         this.likeCount = likeCount;
+        notifyPropertyChanged(BR.likeCount);
     }
     @Bindable
     public int getOpState() {
@@ -82,6 +133,7 @@ public class Status extends BaseObservable implements Serializable {
 
     public void setOpState(int opState) {
         this.opState = opState;
+        notifyPropertyChanged(BR.opState);
     }
     @Bindable
     public int getFeedCategory() {
@@ -90,6 +142,7 @@ public class Status extends BaseObservable implements Serializable {
 
     public void setFeedCategory(int feedCategory) {
         this.feedCategory = feedCategory;
+        notifyPropertyChanged(BR.feedCategory);
     }
     @Bindable
     public int getLikeState() {
@@ -98,6 +151,7 @@ public class Status extends BaseObservable implements Serializable {
 
     public void setLikeState(int likeState) {
         this.likeState = likeState;
+        notifyPropertyChanged(BR.likeState);
     }
     @Bindable
     public int getPrivateType() {
@@ -106,6 +160,7 @@ public class Status extends BaseObservable implements Serializable {
 
     public void setPrivateType(int privateType) {
         this.privateType = privateType;
+        notifyPropertyChanged(BR.privateType);
     }
     @Bindable
     public int getFollowerCount() {
@@ -114,14 +169,16 @@ public class Status extends BaseObservable implements Serializable {
 
     public void setFollowerCount(int followerCount) {
         this.followerCount = followerCount;
+        notifyPropertyChanged(BR.followerCount);
     }
     @Bindable
     public int getFavoiteState() {
-        return favoiteState;
+        return favoriteState;
     }
 
     public void setFavoiteState(int favoiteState) {
-        this.favoiteState = favoiteState;
+        this.favoriteState = favoiteState;
+        notifyPropertyChanged(BR.favoiteState);
     }
     @Bindable
     public String getContent() {
@@ -130,6 +187,7 @@ public class Status extends BaseObservable implements Serializable {
 
     public void setContent(String content) {
         this.content = content;
+        notifyPropertyChanged(BR.content);
     }
     @Bindable
     public String getPubTimeNice() {
@@ -138,6 +196,7 @@ public class Status extends BaseObservable implements Serializable {
 
     public void setPubTimeNice(String pubTimeNice) {
         this.pubTimeNice = pubTimeNice;
+        notifyPropertyChanged(BR.pubTimeNice);
     }
     @Bindable
     public String getUserLogo() {
@@ -146,6 +205,7 @@ public class Status extends BaseObservable implements Serializable {
 
     public void setUserLogo(String userLogo) {
         this.userLogo = userLogo;
+        notifyPropertyChanged(BR.userLogo);
     }
     @Bindable
     public String getUserName() {
@@ -154,6 +214,7 @@ public class Status extends BaseObservable implements Serializable {
 
     public void setUserName(String userName) {
         this.userName = userName;
+        notifyPropertyChanged(BR.userName);
     }
     @Bindable
     public String getShareUrl() {
@@ -162,6 +223,7 @@ public class Status extends BaseObservable implements Serializable {
 
     public void setShareUrl(String shareUrl) {
         this.shareUrl = shareUrl;
+        notifyPropertyChanged(BR.shareUrl);
     }
     @Bindable
     public List<FeedResource> getResList() {
@@ -170,6 +232,7 @@ public class Status extends BaseObservable implements Serializable {
 
     public void setResList(List<FeedResource> resList) {
         this.resList = resList;
+        notifyPropertyChanged(BR.resList);
     }
     @Bindable
     public Long getCreateTime() {
@@ -178,5 +241,6 @@ public class Status extends BaseObservable implements Serializable {
 
     public void setCreateTime(Long createTime) {
         this.createTime = createTime;
+        notifyPropertyChanged(BR.createTime);
     }
 }

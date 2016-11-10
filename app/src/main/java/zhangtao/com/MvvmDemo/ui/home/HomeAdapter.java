@@ -32,23 +32,56 @@ import zhangtao.com.MvvmDemo.utils.BaseAdapter;
 public class HomeAdapter extends BaseAdapter<Status> {
     ArrayList<ImageInfo> imageInfo;
     List<FeedResource> images;
+
+
     public HomeAdapter(Context context) {
         super(context);
     }
 
     @Override
     public RecyclerView.ViewHolder onMyCreateViewHolder(ViewGroup parent, int viewType) {
-        ItemUserfeedLayoutBinding binding= DataBindingUtil.inflate(inflater, R.layout.item_userfeed_layout,parent,false);
-        StatusViewHolder statusViewHolder=new StatusViewHolder(binding.getRoot());
+        ItemUserfeedLayoutBinding binding = DataBindingUtil.inflate(inflater, R.layout.item_userfeed_layout, parent, false);
+        StatusViewHolder statusViewHolder = new StatusViewHolder(binding.getRoot());
         statusViewHolder.setBinding(binding);
         return statusViewHolder;
     }
 
     @Override
     public void onMyBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
-        StatusViewHolder statusViewHolder= (StatusViewHolder) viewHolder;
+        StatusViewHolder statusViewHolder = (StatusViewHolder) viewHolder;
         Status status = bindData(position, statusViewHolder);
         loadLogoAndNineImages(statusViewHolder, status);
+        initEvent(statusViewHolder);
+        stateImg(statusViewHolder, status);
+    }
+
+    private void stateImg(StatusViewHolder statusViewHolder, Status status) {
+        switch (status.getFeedCategory()){
+            case 0 | 1:
+                if (status.getOpState() == 2) {
+                    statusViewHolder.binding.contentLayout.stateIm.setImageResource(R.mipmap.zhiding);
+                } else if (status.getOpState() == 3) {
+                    statusViewHolder.binding.contentLayout.stateIm.setImageResource(R.mipmap.tuijian_tag);
+                }else {
+                    statusViewHolder.binding.contentLayout.stateIm.setVisibility(View.GONE);
+                }
+                break;
+            case 2:
+                statusViewHolder.binding.contentLayout.stateIm.setImageResource(R.mipmap.huodong_tag);
+                break;
+            case 3:
+                statusViewHolder.binding.contentLayout.stateIm.setImageResource(R.mipmap.huati_tag);
+                break;
+            case 4:
+                statusViewHolder.binding.contentLayout.stateIm.setImageResource(R.mipmap.tuiguang_tag);
+                break;
+            default:
+                statusViewHolder.binding.contentLayout.stateIm.setVisibility(View.GONE);
+                break;
+        }
+    }
+
+    private void initEvent(StatusViewHolder statusViewHolder) {
         statusViewHolder.binding.userInfoLayout.setEvent(new FeedHeadImgListener() {
             @Override
             public void headImgClick(View view) {
@@ -78,7 +111,7 @@ public class HomeAdapter extends BaseAdapter<Status> {
 
     private Status bindData(int position, StatusViewHolder statusViewHolder) {
         Status status = getModel(position);
-        statusViewHolder.getBinding().setVariable(BR.Status,status);
+        statusViewHolder.getBinding().setVariable(BR.Status, status);
         statusViewHolder.getBinding().executePendingBindings();
         return status;
     }
@@ -99,14 +132,15 @@ public class HomeAdapter extends BaseAdapter<Status> {
         if (images != null && images.size() == 1) {
             statusViewHolder.binding.nineGrid.setSingleImageRatio(1);
         }
-        ImageLoader.getInstance().displayImage(status.getUserLogo(),statusViewHolder.binding.userInfoLayout.itemMainpageHeadImg);
+        ImageLoader.getInstance().displayImage(status.getUserLogo()+"?imageMogr2/thumbnail/300x300", statusViewHolder.binding.userInfoLayout.itemMainpageHeadImg);
 
     }
 
     @Override
     public int getMyItemViewType(int position) {
-        return 0;
+       return 0;
     }
+
     public class StatusViewHolder extends RecyclerView.ViewHolder {
         ItemUserfeedLayoutBinding binding;
 

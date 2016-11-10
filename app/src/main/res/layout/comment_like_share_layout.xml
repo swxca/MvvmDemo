@@ -2,6 +2,10 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+        <import type="android.view.View"/>
+        <variable
+            name="isVisible"
+            type="boolean"/>
         <variable
             name="event"
             type="zhangtao.com.MvvmDemo.EventListener.CommentShareLikeListener"/>
@@ -15,7 +19,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/con"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="@{isVisible?View.GONE : View.VISIBLE}">
 
         <RelativeLayout
             android:id="@+id/share_layout"
