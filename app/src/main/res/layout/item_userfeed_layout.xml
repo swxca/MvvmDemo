@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="Status"
+            type="zhangtao.com.MvvmDemo.entity.Status" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:orientation="vertical">
+        <include
+            android:id="@+id/user_info_layout"
+            layout="@layout/user_info_layout"
+            app:Status="@{Status}"
+            bind:isVisible="@{(Status.feedCategory==3)}"/>
+
+        <include
+            android:id="@+id/content_layout"
+            layout="@layout/content_layout"
+            app:Status="@{Status}"/>
+
+        <zhangtao.com.MvvmDemo.widget.FlowLayout.FlowTagLayout
+            android:id="@+id/tag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:visibility="gone"/>
+        <!-->
+        自定义属性名字	参数含义
+            ngv_singleImageSize	只显示一张图片时的最大图片大小
+            ngv_singleImageRatio	只显示一张图片时图片宽高比
+            ngv_gridSpacing	网格显示图片时，图片之间的间距，默认3dp
+            ngv_maxSize	最多显示图片的数量，默认最大9张
+            ngv_mode	支持fill和grid两种显示模式，其中grid模式在显示4张图片时采用2*2的布局
+        <!-->
+        <com.lzy.ninegrid.NineGridView
+            android:id="@+id/nineGrid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            app:ngv_gridSpacing="3dp"
+            app:ngv_maxSize="9"
+            app:ngv_mode="grid"
+            app:ngv_singleImageRatio="1"
+            app:ngv_singleImageSize="300dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginBottom="11dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginRight="17dp"
+            android:layout_marginTop="11dp"
+            android:background="#ececec" />
+        <TextView
+            android:id="@+id/topic_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/finish_btn"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:text="参与话题"
+            android:visibility="@{(Status.feedCategory==3)?View.VISIBLE:View.GONE}"/>
+        <!--<include-->
+            <!--layout="@layout/home_feed_comment"-->
+            <!--app:Status="@{Status}"/>-->
+        <include
+            android:id="@+id/comment_like_share_layout"
+            layout="@layout/comment_like_share_layout"
+            app:Status="@{Status}"
+            bind:isVisible="@{Status.feedCategory==3||Status.feedCategory==4}"/>
+        <include
+            android:id="@+id/divide_line"
+            layout="@layout/divide_line" />
+    </LinearLayout>
+</layout>
