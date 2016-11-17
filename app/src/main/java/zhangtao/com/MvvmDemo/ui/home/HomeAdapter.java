@@ -40,10 +40,14 @@ public class HomeAdapter extends BaseAdapter<Status> {
 
     @Override
     public RecyclerView.ViewHolder onMyCreateViewHolder(ViewGroup parent, int viewType) {
-        ItemUserfeedLayoutBinding binding = DataBindingUtil.inflate(inflater, R.layout.item_userfeed_layout, parent, false);
-        StatusViewHolder statusViewHolder = new StatusViewHolder(binding.getRoot());
-        statusViewHolder.setBinding(binding);
-        return statusViewHolder;
+        if (list==null){
+            return getUnKnowViewHolder(parent);
+        }else {
+            ItemUserfeedLayoutBinding binding = DataBindingUtil.inflate(inflater, R.layout.item_userfeed_layout, parent, false);
+            StatusViewHolder statusViewHolder = new StatusViewHolder(binding.getRoot());
+            statusViewHolder.setBinding(binding);
+            return statusViewHolder;
+        }
     }
 
     @Override

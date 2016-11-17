@@ -2,6 +2,7 @@ package zhangtao.com.MvvmDemo.ui.home;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
@@ -10,13 +11,7 @@ import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.request.BaseRequest;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 import java.util.List;
-
 import okhttp3.Call;
 import okhttp3.Response;
 import zhangtao.com.MvvmDemo.R;
@@ -64,12 +59,19 @@ public class HomeActivity extends Activity  {
                         super.onBefore(request);
                         try {
                             request.params("sig", md5Sig.getSignature(request.getParams().urlParamsMap, "b41ab2af0fb6368495662dfeda2c68d2"));
+                           // adapter.showHead();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
-
                 });
+        Handler handler=new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                adapter.showHead();
+            }
+        },2000);
     }
 
     private void initView() {

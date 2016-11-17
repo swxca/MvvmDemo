@@ -6,8 +6,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+
+import com.lzy.okgo.callback.StringCallback;
+
 import java.util.List;
 
+import okhttp3.Call;
+import okhttp3.Response;
 import zhangtao.com.MvvmDemo.R;
 import zhangtao.com.MvvmDemo.fast.NContext;
 import zhangtao.com.MvvmDemo.fast.NStatusBarCompat;
@@ -15,7 +20,7 @@ import zhangtao.com.MvvmDemo.fast.NStatusBarCompat;
 /**
  * Created by Lenovo on 2016/9/12.
  */
-public class BaseActivity extends Activity {
+public class BaseActivity extends Activity{
 
     protected String TAG;
 
