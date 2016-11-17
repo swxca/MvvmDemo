@@ -15,7 +15,6 @@ import java.util.List;
 import okhttp3.Call;
 import okhttp3.Response;
 import zhangtao.com.MvvmDemo.R;
-import zhangtao.com.MvvmDemo.entity.KKKK;
 import zhangtao.com.MvvmDemo.entity.Status;
 import zhangtao.com.MvvmDemo.fast.fastDevJson;
 import zhangtao.com.MvvmDemo.utils.DividerItemDecoration;
@@ -47,7 +46,7 @@ public class HomeActivity extends Activity  {
                     @Override
                     public void onSuccess(String s, Call call, Response response) {
 
-                        list = fastDevJson.UnmarshalFromString(s, KKKK.class).getData().getList();
+                        list = fastDevJson.UnmarshalFromString(s, Status.class).getData().getList();
                         if (list != null) {
                             adapter.appendItems(list);
                         }
