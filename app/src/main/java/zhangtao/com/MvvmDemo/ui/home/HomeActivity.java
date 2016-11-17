@@ -50,7 +50,7 @@ public class HomeActivity extends Activity  {
                         if (list != null) {
                             adapter.appendItems(list);
                         }
-                        Log.e("daskdnakndad",fastDevJson.MarshalToString(list));
+//                        Log.e("daskdnakndad",fastDevJson.MarshalToString(list));
                     }
 
                     @Override
@@ -64,13 +64,13 @@ public class HomeActivity extends Activity  {
                         }
                     }
                 });
-        Handler handler=new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
+//        Handler handler=new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
                 adapter.showHead();
-            }
-        },2000);
+                adapter.showFooter();
+
     }
 
     private void initView() {
