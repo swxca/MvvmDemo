@@ -10,15 +10,19 @@ import zhangtao.com.MvvmDemo.BR;
 
 
 /**
- * Created by zhangtao on 16/11/7.
+ * Created by zhangtao on 16/11/10.
  */
 
 public class Status extends BaseObservable implements Serializable {
+    int state;
+    Status data;
     private int id,userId,userCategory,feedType,commentCount,likeCount,opState,feedCategory
             ,likeState,privateType,followerCount,favoriteState;
     private String content,pubTimeNice,userLogo,userName,shareUrl,title,link,description,userTag,tag;
-    List<FeedResource> resList;
     Long createTime;
+    List<FeedResource> resList;
+    List<Status> list;
+
     @Bindable
     public String getTag() {
         return tag;
@@ -243,4 +247,29 @@ public class Status extends BaseObservable implements Serializable {
         this.createTime = createTime;
         notifyPropertyChanged(BR.createTime);
     }
+    public List<Status> getList() {
+        return list;
+    }
+
+    public void setList(List<Status> list) {
+        this.list = list;
+    }
+
+    public Status getData() {
+        return data;
+    }
+
+    public void setData(Status data) {
+        this.data = data;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
+
+
 }

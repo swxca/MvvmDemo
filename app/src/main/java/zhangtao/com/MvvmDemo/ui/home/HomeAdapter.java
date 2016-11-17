@@ -25,6 +25,7 @@ import zhangtao.com.MvvmDemo.entity.Status;
 import zhangtao.com.MvvmDemo.utils.BaseAdapter;
 
 
+
 /**
  * Created by zhangtao on 16/11/2.
  */
@@ -51,7 +52,6 @@ public class HomeAdapter extends BaseAdapter<Status> {
         StatusViewHolder statusViewHolder = (StatusViewHolder) viewHolder;
         Status status = bindData(position, statusViewHolder);
         loadLogoAndNineImages(statusViewHolder, status);
-        initEvent(statusViewHolder);
         stateImg(statusViewHolder, status);
     }
 
@@ -81,33 +81,6 @@ public class HomeAdapter extends BaseAdapter<Status> {
         }
     }
 
-    private void initEvent(StatusViewHolder statusViewHolder) {
-        statusViewHolder.binding.userInfoLayout.setEvent(new FeedHeadImgListener() {
-            @Override
-            public void headImgClick(View view) {
-                mContext.startActivity(new Intent(mContext, MainActivity.class));
-            }
-        });
-        statusViewHolder.binding.commentLikeShareLayout.setEvent(new CommentShareLikeListener() {
-            @Override
-            public void comment(View view) {
-                mContext.startActivity(new Intent(mContext, MainActivity.class));
-
-            }
-
-            @Override
-            public void share(View view) {
-                mContext.startActivity(new Intent(mContext, MainActivity.class));
-
-            }
-
-            @Override
-            public void like(View view) {
-                mContext.startActivity(new Intent(mContext, MainActivity.class));
-
-            }
-        });
-    }
 
     private Status bindData(int position, StatusViewHolder statusViewHolder) {
         Status status = getModel(position);
@@ -146,6 +119,35 @@ public class HomeAdapter extends BaseAdapter<Status> {
 
         public void setBinding(ItemUserfeedLayoutBinding binding) {
             this.binding = binding;
+            initEvent();
+        }
+
+        private void initEvent() {
+            binding.userInfoLayout.setEvent(new FeedHeadImgListener() {
+                @Override
+                public void headImgClick(View view) {
+                    mContext.startActivity(new Intent(mContext, MainActivity.class));
+                }
+            });
+          binding.commentLikeShareLayout.setEvent(new CommentShareLikeListener() {
+                @Override
+                public void comment(View view) {
+                    mContext.startActivity(new Intent(mContext, MainActivity.class));
+
+                }
+
+                @Override
+                public void share(View view) {
+                    mContext.startActivity(new Intent(mContext, MainActivity.class));
+
+                }
+
+                @Override
+                public void like(View view) {
+                    mContext.startActivity(new Intent(mContext, MainActivity.class));
+
+                }
+            });
         }
 
         public ItemUserfeedLayoutBinding getBinding() {
